@@ -11,17 +11,17 @@ import javax.persistence.TypedQuery;
 
 public class TestJpa {
 
-	/**Tester la connection à la BD compte avec JPA
+	/**Tester la connection ï¿½ la BD compte avec JPA
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("compta_pu");
+		EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("biblio_pu");
 		
 		EntityManager em = entityManagerFactory.createEntityManager();
 		
 		//Recherche simple
 		Livre livre = em.find(Livre.class, 2);
-		System.out.println(livre.getTitre()+" à été écrit par "+livre.getAuteur());
+		System.out.println(livre.getTitre()+" ï¿½ ï¿½tï¿½ ï¿½crit par "+livre.getAuteur());
 		
 		//Insertion livre
 		Livre livre2 = new Livre();
@@ -43,15 +43,15 @@ public class TestJpa {
 		
 		tx2.commit();
 		
-		//requête JPQL 1
+		//requï¿½te JPQL 1
 		TypedQuery<Livre> query1 = em.createQuery("select l from Livre l where l.titre = 'Guerre et paix'", Livre.class);
 		Livre l2 = query1.getResultList().get(0);
-		System.out.println(l2.getTitre()+" à été écrit par "+l2.getAuteur());
+		System.out.println(l2.getTitre()+" ï¿½ ï¿½tï¿½ ï¿½crit par "+l2.getAuteur());
 		
-		//requête JPQL 2
+		//requï¿½te JPQL 2
 		TypedQuery<Livre> query2 = em.createQuery("select l from Livre l where l.auteur = 'Jules Verne'", Livre.class);
 		Livre l3 = query2.getResultList().get(0);
-		System.out.println(l3.getTitre()+" à été écrit par "+l3.getAuteur());
+		System.out.println(l3.getTitre()+" ï¿½ ï¿½tï¿½ ï¿½crit par "+l3.getAuteur());
 		
 		//Suppimer un livre
 		Livre livreSuppr = em.find(Livre.class, 4);

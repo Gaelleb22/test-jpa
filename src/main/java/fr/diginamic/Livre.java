@@ -1,11 +1,14 @@
 package fr.diginamic;
 
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
-/**Représente une entité livre
+/**Reprï¿½sente une entitï¿½ livre
  * @author formation
  *
  */
@@ -14,12 +17,28 @@ import javax.persistence.Table;
 public class Livre {
 	
 	@Id
-	
 	private int id;
 	@Column (name = "AUTEUR")
 	private String auteur;
 	@Column (name = "TITRE")
 	private String titre;
+	
+	@ManyToMany(mappedBy = "livres")
+	private Set<Emprunt> emprunts;
+
+	/** Getter
+	 * @return the emprunts
+	 */
+	public Set<Emprunt> getEmprunts() {
+		return emprunts;
+	}
+
+	/** Setter
+	 * @param emprunts the emprunts to set
+	 */
+	public void setEmprunts(Set<Emprunt> emprunts) {
+		this.emprunts = emprunts;
+	}
 
 	/** Getter
 	 * @return the auteur
