@@ -1,4 +1,4 @@
-package fr.diginamic;
+package fr.diginamic.Bibliothèque;
 
 import java.util.Set;
 
@@ -19,7 +19,6 @@ import javax.persistence.Table;
 public class Client {
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	@Column (name = "NOM")
 	private String nom;
