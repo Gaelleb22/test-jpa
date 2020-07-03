@@ -23,6 +23,7 @@ import javax.persistence.Table;
 public class Client {
 	
 	@Id
+	@Column(name = "ID")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	/** nom du client */
@@ -40,13 +41,41 @@ public class Client {
 
 	
 	@ManyToOne
-	@JoinColumn(name = "BAN_ID")
+	@JoinColumn(name = "ID_BAN")
 	private Banque banque;
 	
 	@ManyToMany(mappedBy = "clients")
 	private Set<Compte> comptes;
 	
 	
+	/** Getter
+	 * @return the banque
+	 */
+	public Banque getBanque() {
+		return banque;
+	}
+
+	/** Setter
+	 * @param banque the banque to set
+	 */
+	public void setBanque(Banque banque) {
+		this.banque = banque;
+	}
+
+	/** Getter
+	 * @return the comptes
+	 */
+	public Set<Compte> getComptes() {
+		return comptes;
+	}
+
+	/** Setter
+	 * @param comptes the comptes to set
+	 */
+	public void setComptes(Set<Compte> comptes) {
+		this.comptes = comptes;
+	}
+
 	/** Getter
 	 * @return the id
 	 */

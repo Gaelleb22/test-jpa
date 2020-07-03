@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**Représente une opération réalisé sur un compte
@@ -18,6 +20,7 @@ import javax.persistence.Table;
 public class Operation {
 	
 	@Id
+	@Column(name = "ID")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	/** Getter
@@ -43,6 +46,23 @@ public class Operation {
 	private String motif;
 	
 	
+	@ManyToOne
+	@JoinColumn(name = "ID_COM")
+	private Compte compte;
+	
+	
+	/** Getter
+	 * @return the compte
+	 */
+	public Compte getCompte() {
+		return compte;
+	}
+	/** Setter
+	 * @param compte the compte to set
+	 */
+	public void setCompte(Compte compte) {
+		this.compte = compte;
+	}
 	/** Getter
 	 * @return the dateOp
 	 */

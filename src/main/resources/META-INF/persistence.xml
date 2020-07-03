@@ -7,24 +7,38 @@ http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
 	<persistence-unit name="biblio_pu"
 		transaction-type="RESOURCE_LOCAL">
 		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+		<class>fr.diginamic.bibliothèque.Emprunt</class>
+		<class>fr.diginamic.bibliothèque.Client</class>
+		<class>fr.diginamic.bibliothèque.Livre</class>
 		<properties>
 			<property name="javax.persistence.jdbc.url" value="jdbc:mariadb://localhost:3306/biblio" />
 			<property name="javax.persistence.jdbc.user" value="root" />
 			<property name="javax.persistence.jdbc.password" value="" />
 			<property name="javax.persistence.jdbc.driver" value="org.mariadb.jdbc.Driver" />
 			<property name="hibernate.show_sql" value="false" />
+			<property name="hibernate.archive.autodetection" value="" />
 		</properties>
 	</persistence-unit>
 	<persistence-unit name="banque_pu"
 		transaction-type="RESOURCE_LOCAL">
 		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+		<class>fr.diginamic.banque.Banque</class>
+		<class>fr.diginamic.banque.Client</class>
+		<class>fr.diginamic.banque.Compte</class>
+		<class>fr.diginamic.banque.Operation</class>
 		<properties>
 			<property name="javax.persistence.jdbc.url" value="jdbc:mariadb://localhost:3306/banque" />
 			<property name="javax.persistence.jdbc.user" value="root" />
 			<property name="javax.persistence.jdbc.password" value="" />
 			<property name="javax.persistence.jdbc.driver" value="org.mariadb.jdbc.Driver" />
-			<property name="hibernate.show_sql" value="false" />
+			<property name="hibernate.show_sql" value="true" />
+			
+			<!-- Drop and create à chaque redémarrage -->
 			<property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
+			<!-- desactiver l'autodetection des classes de type @Entity -->
+			<property name="hibernate.archive.autodetection" value="" />
+			<!-- Activation de la génération des tables manquantes uniquement -->
+			<!--<property name="hibernate.hbm2ddl.auto" value="update"/>-->
 		</properties>
 	</persistence-unit>
 </persistence>

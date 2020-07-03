@@ -1,4 +1,4 @@
-package fr.diginamic.Bibliothèque;
+package fr.diginamic.bibliothèque;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +21,7 @@ public class TestJpa {
 		
 		//Recherche simple
 		Livre livre = em.find(Livre.class, 2);
-		System.out.println(livre.getTitre()+" � �t� �crit par "+livre.getAuteur());
+		System.out.println(livre.getTitre()+" de "+livre.getAuteur());
 		
 		//Insertion livre
 		Livre livre2 = new Livre();
@@ -46,12 +46,12 @@ public class TestJpa {
 		//requ�te JPQL 1
 		TypedQuery<Livre> query1 = em.createQuery("select l from Livre l where l.titre = 'Guerre et paix'", Livre.class);
 		Livre l2 = query1.getResultList().get(0);
-		System.out.println(l2.getTitre()+" � �t� �crit par "+l2.getAuteur());
+		System.out.println(l2.getTitre()+" de "+l2.getAuteur());
 		
 		//requ�te JPQL 2
 		TypedQuery<Livre> query2 = em.createQuery("select l from Livre l where l.auteur = 'Jules Verne'", Livre.class);
 		Livre l3 = query2.getResultList().get(0);
-		System.out.println(l3.getTitre()+" � �t� �crit par "+l3.getAuteur());
+		System.out.println(l3.getTitre()+" de "+l3.getAuteur());
 		
 		//Suppimer un livre
 		Livre livreSuppr = em.find(Livre.class, 4);

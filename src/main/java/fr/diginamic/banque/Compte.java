@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**Représente un compte bancaire
@@ -21,10 +22,11 @@ import javax.persistence.Table;
 public class Compte {
 	
 	@Id
+	@Column(name = "ID")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	/** numero du compte */
-	@Column(name = "NUMERO")
+	@Column(name = "NUMERO", unique = true)
 	private String numero;
 	/** solde du compte */
 	@Column(name = "SOLDE")
@@ -36,6 +38,35 @@ public class Compte {
 		inverseJoinColumns = @JoinColumn(name = "ID_CLI", referencedColumnName = "ID"))
 	private Set<Client> clients;
 	
+	@OneToMany(mappedBy = "compte")
+	private Set<Operation> operations;
+	
+	
+	
+	/** Getter
+	 * @return the clients
+	 */
+	public Set<Client> getClients() {
+		return clients;
+	}
+	/** Setter
+	 * @param clients the clients to set
+	 */
+	public void setClients(Set<Client> clients) {
+		this.clients = clients;
+	}
+	/** Getter
+	 * @return the operations
+	 */
+	public Set<Operation> getOperations() {
+		return operations;
+	}
+	/** Setter
+	 * @param operations the operations to set
+	 */
+	public void setOperations(Set<Operation> operations) {
+		this.operations = operations;
+	}
 	/** Getter
 	 * @return the id
 	 */

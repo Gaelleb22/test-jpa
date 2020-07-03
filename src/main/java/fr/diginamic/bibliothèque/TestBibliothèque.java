@@ -1,4 +1,4 @@
-package fr.diginamic.Bibliothèque;
+package fr.diginamic.bibliothèque;
 
 import java.time.format.DateTimeFormatter;
 import java.util.Set;

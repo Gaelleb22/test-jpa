@@ -1,4 +1,4 @@
-package fr.diginamic.Bibliothèque;
+package fr.diginamic.bibliothèque;
 
 import java.util.Set;
 

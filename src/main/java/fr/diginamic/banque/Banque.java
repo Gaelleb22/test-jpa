@@ -19,6 +19,7 @@ import javax.persistence.Table;
 public class Banque {
 	
 	@Id
+	@Column(name = "ID")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	/** nom de la banque */
@@ -30,6 +31,21 @@ public class Banque {
 	private Set<Client> clients;
 	
 	
+	
+	/** Getter
+	 * @return the clients
+	 */
+	public Set<Client> getClients() {
+		return clients;
+	}
+
+	/** Setter
+	 * @param clients the clients to set
+	 */
+	public void setClients(Set<Client> clients) {
+		this.clients = clients;
+	}
+
 	/** Getter
 	 * @return the id
 	 */
